@@ -9,15 +9,7 @@ def get_data(place, forecast_days=None, data_type=None):
     filteredData = data['list']
     nrValue = forecast_days * 8
     filteredData = filteredData[:nrValue]
-    temperatures = []
-    dates = []
-    if data_type == 'Temperature':
-        temperatures = [filteredData[i]['main']['temp']/10 for i in range(len(filteredData))]
-        dates = [filteredData[i]['dt_txt'] for i in range(len(filteredData))]
-    if data_type == 'Sky':
-        temperatures = [dict['weather'][0]['main'] for dict in filteredData]
-        dates = [filteredData[i]['dt_txt'] for i in range(len(filteredData))]
-    return dates, temperatures
+    return filteredData
 
 
 if __name__ == "__main__":
